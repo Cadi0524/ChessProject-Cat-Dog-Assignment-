@@ -1,14 +1,18 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SquareController : MonoBehaviour
 {
    [SerializeField] private Sprite[] sprites;
-   private Square[,] squares = new Square[8, 8];
+   public Square[,] squares = new Square[8, 8];
    [SerializeField] GameObject squarePrefab;
 
    private Dictionary<PieceType, Sprite> pieceSprites;
+   
+   public Action<int,int> OnButtonClicked;
 
 
    public enum PieceType
@@ -63,12 +67,20 @@ public class SquareController : MonoBehaviour
          {
             Square temp = Instantiate(squarePrefab, this.transform).GetComponent<Square>();
             squares[i, j] = temp;
+            temp.OnButtonClick += HandleSquareClicked;
+            temp.position = (i, j);
          }
       }
    }
 
+   public void HandleSquareClicked(int row, int col)
+   {
+      OnButtonClicked?.Invoke(row, col);
+   }
+ 
+
 /// <summary>
-/// 들어온 row, col, PieceType을 사용해 그 칸의 마커를 설정
+/// 들어온 row, col, PieceType을 사용해 그 칸의 마커를 설정 / 현재 상태까지도 설정
 /// </summary>
 /// <param name="row"></param>
 /// <param name="col"></param>
@@ -78,11 +90,11 @@ public class SquareController : MonoBehaviour
      Square target = squares[row, col];
      if (piece != PieceType.None)
      {
-        target.SetMarker(pieceSprites[piece]);
+        target.SetMarker(pieceSprites[piece], piece);
      }
      else
      {
-        target.SetMarker(null);
+        target.SetMarker(null, piece);
      }
    }
    
