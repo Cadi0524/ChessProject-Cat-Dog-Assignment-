@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 41e58a5a19eda234ab9cadfdbc3036ff
+guid: 793d3c2e2f53484459079954dae5bd84
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3206306570376222680
-    second: whitePawn_0
-  - first:
-      213: -1937681046004049718
-    second: whitePawn_1
+      213: 6362706393618368774
+    second: panel-border-005_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -113,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -129,45 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: whitePawn_0
+      name: panel-border-005_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 22
-        width: 256
-        height: 256
+        x: 0
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8d7964886d61f7c20800000000000000
-      internalID: 3206306570376222680
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: whitePawn_1
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 169
-        width: 89
-        height: 82
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ac8dbecda59fb15e0800000000000000
-      internalID: -1937681046004049718
+      spriteID: 609cab101cfdc4850800000000000000
+      internalID: 6362706393618368774
       vertices: []
       indices: 
       edges: []
@@ -176,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9b9e089db26d74a4698b569ac02fc051
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      whitePawn_0: 3206306570376222680
-      whitePawn_1: -1937681046004049718
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
