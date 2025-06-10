@@ -12,11 +12,12 @@ public class SquareController : MonoBehaviour
 
    private Dictionary<PieceType, Sprite> pieceSprites;
    
-   public Action<int,int> OnButtonClicked;
+   public Action<int,int,bool> OnButtonClicked;
 
 
    public enum PieceType
    {
+      None,
       WhiteKing,
       WhiteQueen,
       WhiteRook,
@@ -30,7 +31,7 @@ public class SquareController : MonoBehaviour
       BlackKnight,
       BlackPawn,
       CanMove,
-      None,
+      
    }
 
    public void Awake()
@@ -51,6 +52,7 @@ public class SquareController : MonoBehaviour
          { PieceType.BlackKnight, sprites[10] },
          { PieceType.BlackPawn, sprites[11] },
          {PieceType.CanMove, sprites[12]},
+         {PieceType.None, null},
       };
       // 보드 생성
       InitBoard();
@@ -73,9 +75,9 @@ public class SquareController : MonoBehaviour
       }
    }
 
-   public void HandleSquareClicked(int row, int col)
+   public void HandleSquareClicked(int row, int col, bool ishighlighted)
    {
-      OnButtonClicked?.Invoke(row, col);
+      OnButtonClicked?.Invoke(row, col, ishighlighted);
    }
  
 
@@ -96,6 +98,14 @@ public class SquareController : MonoBehaviour
      {
         target.SetMarker(null, piece);
      }
+   }
+
+   public void SetHighlight(int row, int col, bool highlighted)
+   {
+      Square target = squares[row, col];
+      target.isHilighted = highlighted;
+      target.isHighlighted();
+      
    }
    
 }

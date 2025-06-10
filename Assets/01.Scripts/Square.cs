@@ -2,23 +2,28 @@
 using System;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Square : MonoBehaviour
 {
-   private Image image;
+    [SerializeField] Image pieceImage;
+   [SerializeField] Image hilightImage;
    private Color32 noneColor = new Color32(0, 0, 0, 0);
    private Color32 existColor = new Color32(255, 255, 255, 255);
    public (int row, int col) position;
-   public SquareController.PieceType currentState;
+   public SquareController.PieceType currentState = SquareController.PieceType.None;
    public Button button;
-   public Action<int,int> OnButtonClick;
+   public Action<int,int,bool> OnButtonClick;
+
+   public bool isHilighted = false;
+   
+   [SerializeField] private Sprite highlightSprite;
 
    public void Awake()
    {
-      image = GetComponent<Image>();
       button = GetComponent<Button>();
-      button.onClick.AddListener(() => OnButtonClick?.Invoke(position.row, position.col));
+      button.onClick.AddListener(() => OnButtonClick?.Invoke(position.row, position.col,isHilighted));
    }
 
    
@@ -27,17 +32,34 @@ public class Square : MonoBehaviour
    {
       if (pieceSprite != null)
       {
-         image.sprite = pieceSprite;
-         image.color = existColor;
+         pieceImage.sprite = pieceSprite;
+         pieceImage.color = existColor;
          currentState = pieceType;
         
       }
       else
       {
-         image.color = noneColor;
+         pieceImage.sprite = null;
+         pieceImage.color = noneColor;
          currentState = SquareController.PieceType.None;
       }
    }
+
+   public void isHighlighted()
+   {
+      if (isHilighted)
+      {
+         hilightImage.color = existColor;
+         hilightImage.sprite = highlightSprite;
+      }
+      else
+      {
+         hilightImage.color = noneColor;
+         hilightImage.sprite = null;
+      }
+
+   }
+ 
    
    
    
